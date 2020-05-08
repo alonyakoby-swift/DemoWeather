@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-class Weather: Decodable {
+class Weather: Decodable, Equatable {
+    
 
     var id: String
     var main: String
@@ -23,5 +24,15 @@ class Weather: Decodable {
         self.icon = icon
         
     }
+    
+    static func == (lhs: Weather, rhs: Weather) -> Bool {
+        lhs.id == rhs.id &&
+        lhs.main == rhs.main &&
+        lhs.description == rhs.description &&
+        lhs.icon == rhs.icon
+        
+        
+    }
+
 }
 

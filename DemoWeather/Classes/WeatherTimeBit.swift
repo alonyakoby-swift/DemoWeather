@@ -8,7 +8,8 @@
 
 import Foundation
 
-class WeatherTimeBit: Decodable {
+class WeatherTimeBit: Decodable, Equatable {
+    
     
     var timezone: String
     var dt: Date
@@ -44,6 +45,26 @@ class WeatherTimeBit: Decodable {
         self.weather = weather
 
     }
-    
+    static func == (lhs: WeatherTimeBit, rhs: WeatherTimeBit) -> Bool {
+        lhs.timezone == rhs.timezone &&
+        lhs.dt == rhs.dt &&
+        lhs.sunrise == rhs.sunrise &&
+        lhs.sunset == rhs.sunset &&
+        lhs.temp == rhs.temp &&
+        lhs.feels_like == rhs.feels_like &&
+        lhs.pressure == rhs.pressure &&
+        lhs.humidity == rhs.humidity &&
+        lhs.dew_point == rhs.dew_point &&
+        lhs.uvi == rhs.uvi &&
+        lhs.wind_deg == rhs.wind_deg &&
+        lhs.clouds == rhs.clouds &&
+        lhs.wind_speed == rhs.wind_speed &&
+        lhs.weather == rhs.weather
+        
+        
+        
+        
+    }
+
 }
 

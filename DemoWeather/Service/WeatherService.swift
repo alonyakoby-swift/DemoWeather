@@ -19,10 +19,6 @@ struct HardCoded {
      var lon: String
  }
 
-protocol CityWeatherProtocol {
-    func fetchWeatherOneShot(cities: [HardCoded]) -> Observable<[Location]>
-}
-
 extension UIImageView {
     
         func loadWeatherIcon(icon: String) {
@@ -42,7 +38,8 @@ extension UIImageView {
 
 class WeatherService {
     
-     let hardCodedCities: [HardCoded] = [ HardCoded(name: "Berlin", lat: "52", lon: "30"),
+     let hardCodedCities: [HardCoded] = [HardCoded(name: "Berlin", lat: "52", lon: "30"),
+                                HardCoded(name: "Vienna", lat: "48.2", lon: "16.3"),
                                  HardCoded(name: "Barcelona", lat: "41", lon: "23"),
                                  HardCoded(name: "New York", lat: "40.7", lon: "74"),
                                  HardCoded(name: "Amsterdam", lat: "52", lon: "22"),
@@ -59,8 +56,6 @@ class WeatherService {
      public func unixConvert(unix: Double) -> Date {
          return Date(timeIntervalSince1970: unix)
      }
-
- 
     
     fileprivate let API_KEY = "765cd33a31e489966b97f3788935e416"
     fileprivate let API_Onecall_URL = "https://api.openweathermap.org/data/2.5/onecall"

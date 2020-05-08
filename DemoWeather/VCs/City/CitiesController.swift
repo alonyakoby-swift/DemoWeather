@@ -79,11 +79,12 @@ extension CitiesController: UITableViewDelegate {
         let currentCell = tableView.cellForRow(at: indexPath) as! CityCell
 
         let location: Location = currentCell.location!
-        let vc = UIViewController()
+        print(location.name)
+        let vc = CityDetailController()
         vc.view.backgroundColor = .black
+        vc.location = location
         self.navigationController?.pushViewController(vc, animated: true)
         
-        print(location.weatherTimeBit.sunrise.toString())
     }
 }
 

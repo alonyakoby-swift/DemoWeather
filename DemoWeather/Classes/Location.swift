@@ -8,7 +8,9 @@
 
 import Foundation
 
-class Location: Decodable {
+class Location: Decodable, Equatable {
+    
+    
     
     
     var name: String
@@ -26,6 +28,16 @@ class Location: Decodable {
         self.weatherTimeBit = weatherTimeBit
         self.hourly = hourly
         self.sevenForcase = sevenForcase
+        
+    }
+    
+    static func == (lhs: Location, rhs: Location) -> Bool {
+        lhs.name == rhs.name &&
+        lhs.lat == rhs.lat &&
+        lhs.lon == rhs.lon &&
+        lhs.weatherTimeBit == rhs.weatherTimeBit &&
+        lhs.hourly == rhs.hourly &&
+        lhs.sevenForcase == rhs.sevenForcase
         
     }
 }

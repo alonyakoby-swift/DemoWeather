@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct HourlyWeather: Decodable {
+struct HourlyWeather: Decodable, Equatable {
+    static func == (lhs: HourlyWeather, rhs: HourlyWeather) -> Bool {
+        lhs.HourlyWeather == rhs.HourlyWeather
+    }
+    
     
     var HourlyWeather: [WeatherTimeBit]
     

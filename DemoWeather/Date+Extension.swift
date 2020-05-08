@@ -17,6 +17,14 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func toHM(format: String = "HH:mm") -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+    
+    
     func dateAndTimetoString(format: String = "yyyy-MM-dd HH:mm") -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
