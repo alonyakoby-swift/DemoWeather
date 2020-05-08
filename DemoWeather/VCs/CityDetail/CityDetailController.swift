@@ -12,7 +12,7 @@ import Carbon
 
 class CityDetailController: UIViewController {
 
-    var location: Location?
+     var location: Location!
     @IBOutlet weak var tableview: UITableView!
     
     let renderer = Renderer(
@@ -20,9 +20,12 @@ class CityDetailController: UIViewController {
         updater: UITableViewUpdater()
     )
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          return .lightContent
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         renderer.target = tableview
         tableview.tableFooterView = UIView()
         tableview.backgroundView?.backgroundColor = .orange
@@ -30,12 +33,33 @@ class CityDetailController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        self.title = location.name
         print(location?.lat)
         guard let location = location else { print("No location passed."); return }
+        
         let header = ViewNode(DetailHeaderComponent(location: location))
-        renderer.render(Section(id: 0, header: header))
+        let hourlyColletion = ViewNode(HourlyCollectionViewComponent(location: location))
+        let w = WeatherService()
+//        let date = w.unixConvert(unix: dt!)
+//        self.date.text = date.toString(format: "mm.dd")
+//        self.day.text = "\(date.toString(format: "EEEE"))"
+//
+//        self.min.text = String(forcast.temperature.min)
+//        self.max.text = String(forcast.temperature.max)
+//        self.icon.loadWeatherIcon(icon: forcast.weather.icon)
+//        self.desc.text = forcast.weather.description
+
+        
+        
+        let section = ViewNode(ForecastCellComponent(day: <#T##String#>, date: <#T##String#>, min: <#T##String#>, max: <#T##String#>, desc: <#T##String#>, icon: <#T##String#>))
+//        print(location.hourly.HourlyWeather.count)
+        renderer.render(
+            Section(id: 0, header: header),
+            Section(id: 1, header: hourlyColletion)
+        )
     }
+    
+    func
 
     /*
     // MARK: - Navigation

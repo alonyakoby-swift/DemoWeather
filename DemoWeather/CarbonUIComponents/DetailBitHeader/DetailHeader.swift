@@ -19,7 +19,7 @@ struct DetailHeaderComponent: Component, Equatable {
     
     func render(in content: DetailHeader) {
         
-        content.timezone.text = location.name
+//        content.timezone.text = location.name
         content.icon.loadWeatherIcon(icon: location.weatherTimeBit.weather.icon)
         content.temperature.text = location.weatherTimeBit.temp.rounded().forTrailingZero().convertToCelcius()
         content.desc.text = location.weatherTimeBit.weather.description
@@ -29,7 +29,7 @@ struct DetailHeaderComponent: Component, Equatable {
     }
     
     func referenceSize(in bounds: CGRect) -> CGSize? {
-        return CGSize(width: bounds.width, height: 130)
+        return CGSize(width: bounds.width, height: 100)
     }
     
 }

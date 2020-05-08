@@ -9,13 +9,28 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ForcastHeader" customModule="DemoWeather" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 Day Weather Forcast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mkx-Ma-b5a">
+                    <rect key="frame" x="20" y="10" width="254" height="29"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Mkx-Ma-b5a" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="AZK-xJ-u8R"/>
+                <constraint firstItem="Mkx-Ma-b5a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="yES-36-ptw"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="139" y="153"/>
+            <connections>
+                <outlet property="sectionTitle" destination="Mkx-Ma-b5a" id="VfI-IV-7sk"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="152.34375"/>
         </view>
     </objects>
 </document>

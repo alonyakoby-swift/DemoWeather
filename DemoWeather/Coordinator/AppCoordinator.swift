@@ -21,6 +21,8 @@ class AppCoordinator {
         let vm = CitiesViewModel()
         let vc = CitiesController.instantiate(viewModel: vm)
         let nav = UINavigationController(rootViewController: vc)
+        let attrs = [ NSAttributedString.Key.foregroundColor: UIColor.white ]
+        UINavigationBar.appearance().titleTextAttributes = attrs
         nav.navigationBar.setBackgroundImage(UIImage(), for: .default)
         nav.navigationBar.barTintColor = .white
         window.rootViewController = nav

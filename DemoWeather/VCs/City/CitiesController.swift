@@ -36,7 +36,10 @@ class CitiesController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          return .lightContent
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +49,6 @@ class CitiesController: UIViewController {
         tableview.rowHeight = 100
         
         self.title = "Cities"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
         self.tableview.delegate = self
         viewModel.fetchWeather()
             .observeOn(MainScheduler.instance)
