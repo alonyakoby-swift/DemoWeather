@@ -37,4 +37,12 @@ extension String {
         return text
 
     }
+    
+    func convertToShortCelcius() -> String {
+        let text = self + "°"
+        return text
+
+    }
+
 }
+

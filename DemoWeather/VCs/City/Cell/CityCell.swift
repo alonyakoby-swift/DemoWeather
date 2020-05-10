@@ -19,8 +19,9 @@ class CityCell: UITableViewCell {
     var location: Location?
 
     
-    
+    /** Function to autofill cell from WeatherTimeBit  Class object.*/
     func configure (bit: WeatherTimeBit) {
+        
         let temperature = "\(bit.temp)°C"
         print(temperature)
         nameLabel.text = bit.timezone

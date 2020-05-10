@@ -13,6 +13,7 @@ import Alamofire
 import SwiftyJSON
 import Kingfisher
 
+// Simple Struct to guide a starting point. Hard coded to simplify the Project
 struct City {
      var name:String
      var lat: String
@@ -20,7 +21,7 @@ struct City {
  }
 
 extension UIImageView {
-    
+        // An extension that directy loads the icon from the OWAPI
         func loadWeatherIcon(icon: String) {
             DispatchQueue.main.async {
                 // Handle Images
@@ -37,7 +38,7 @@ extension UIImageView {
 }
 
 class WeatherService {
-    
+     // STARTING LIST
      let hardCodedCities: [City] = [City(name: "Berlin", lat: "52", lon: "30"),
                                 City(name: "Vienna", lat: "48.2", lon: "16.3"),
                                  City(name: "Barcelona", lat: "41", lon: "23"),
@@ -52,7 +53,7 @@ class WeatherService {
 
      
      
-    
+    // QUICK PATCH
      public func unixConvert(unix: Double) -> Date {
          return Date(timeIntervalSince1970: unix)
      }
@@ -111,7 +112,7 @@ class WeatherService {
     
       func parseLocation(city: City, json: JSON) -> Location? {
                 guard let weathertimeBit = parseCurrent(timezone: city.name, json: json["current"]) else { return nil }
-                guard let hourly = parseHourly(timezone: city.name, json: json["hourly"]) else { return nil}
+        guard let hourly = parseHourly(timezone: city.name, json: json["hourly"]) else { return nil}
                 guard let sevenForcase = parse7Day(json: json["daily"]) else { return nil }
 
                 let location = Location(name: city.name,

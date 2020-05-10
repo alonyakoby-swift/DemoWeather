@@ -137,12 +137,12 @@
 			path = VCs;
 			sourceTree = "<group>";
 		};
-		DF640D222464089A00667D63 /* Service */ = {
+		DF640D222464089A00667D63 /* Weather Service */ = {
 			isa = PBXGroup;
 			children = (
 				DF640D23246408A500667D63 /* WeatherService.swift */,
 			);
-			path = Service;
+			path = "Weather Service";
 			sourceTree = "<group>";
 		};
 		DF640D25246408E500667D63 /* Classes */ = {
@@ -244,7 +244,7 @@
 				DFEF7B0F2464A0370052510F /* Carbon Components */,
 				DF640D3224640EEF00667D63 /* VM */,
 				DF640D25246408E500667D63 /* Classes */,
-				DF640D222464089A00667D63 /* Service */,
+				DF640D222464089A00667D63 /* Weather Service */,
 				DF640D1D2464083400667D63 /* VCs */,
 				DF640D1A2464052C00667D63 /* Coordinator */,
 				DF97BB4924637526003AAD44 /* AppDelegate.swift */,

@@ -11,11 +11,14 @@ import RxSwift
 import RxCocoa
 import Carbon
 
+
+
 class CitiesController: UIViewController {
 
     let disposeBag = DisposeBag()
     private var viewModel: CitiesViewModel!
-    
+        
+    /** New Dewscription */
     static func instantiate(viewModel: CitiesViewModel) -> CitiesController {
         let vc = CitiesController()
         vc.viewModel = viewModel
@@ -107,7 +110,7 @@ extension CitiesController: UITableViewDelegate {
                     let date = service.unixConvert(unix: dt)
                     
                     let node = CellNode(ForecastCellComponent(day: date.toString(format: "EE"),
-                    date: date.toString(format: "dd.MM.yyyy"), min: "/\(String(i.temperature.min.rounded().forTrailingZero()).convertToCelcius())", max: String(i.temperature.max.rounded().forTrailingZero()).convertToCelcius(), desc: i.weather.description, icon: i.weather.icon))
+                    date: date.toString(format: "dd.MM.yyyy"), min: "/\(String(i.temperature.min.rounded().forTrailingZero()).convertToShortCelcius())", max: String(i.temperature.max.rounded().forTrailingZero()).convertToShortCelcius(), desc: i.weather.description, icon: i.weather.icon))
                     
                     nodes.append(node)
 
