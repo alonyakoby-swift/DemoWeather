@@ -14,7 +14,8 @@ class CityCell: UITableViewCell {
     @IBOutlet weak var imageview: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    
+    @IBOutlet weak var descLabel: UILabel!
+
     var location: Location?
 
     
@@ -23,7 +24,8 @@ class CityCell: UITableViewCell {
         let temperature = "\(bit.temp)°C"
         print(temperature)
         nameLabel.text = bit.timezone
-        imageView?.loadWeatherIcon(icon: bit.weather.icon ?? "")
+        descLabel.text = bit.weather.description
+        imageView?.loadWeatherIcon(icon: bit.weather.icon )
 
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

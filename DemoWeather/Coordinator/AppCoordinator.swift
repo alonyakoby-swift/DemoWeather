@@ -17,15 +17,28 @@ class AppCoordinator {
         self.window = window
     }
     
+
+    
     func start() {
         let vm = CitiesViewModel()
         let vc = CitiesController.instantiate(viewModel: vm)
-        let nav = UINavigationController(rootViewController: vc)
+        let nav = LightNavigationController(rootViewController: vc)
         let attrs = [ NSAttributedString.Key.foregroundColor: UIColor.white ]
         UINavigationBar.appearance().titleTextAttributes = attrs
-        nav.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        nav.navigationBar.barTintColor = .white
+        nav.navigationBar.barTintColor = UIColor.black
+//        nav.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nav.navigationBar.barTintColor = .black
+        window.tintColor = UIColor.orange
         window.rootViewController = nav
         window.makeKeyAndVisible()
     }
+}
+
+
+class LightNavigationController: UINavigationController {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          return .lightContent
+    }
+
 }

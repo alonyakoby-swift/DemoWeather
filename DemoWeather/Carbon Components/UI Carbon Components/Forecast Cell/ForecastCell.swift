@@ -49,7 +49,7 @@ class ForecastCell: UIView, NibLoadable {
     
     func configure(day: String,date: String,min: String,max: String,desc: String,icon: String) {
         self.day.text = day
-        
+        self.date.text = date
         self.min.text = min
         self.max.text = max
         self.icon.loadWeatherIcon(icon: icon)

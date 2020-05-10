@@ -16,13 +16,23 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 Day Weather Forcast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mkx-Ma-b5a">
                     <rect key="frame" x="20" y="10" width="254" height="29"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ech-o4-gyP">
+                    <rect key="frame" x="20" y="48" width="374" height="1"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="nRp-6o-H0e"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Mkx-Ma-b5a" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="AZK-xJ-u8R"/>
+                <constraint firstAttribute="trailing" secondItem="ech-o4-gyP" secondAttribute="trailing" constant="20" id="Dss-K3-spW"/>
+                <constraint firstItem="ech-o4-gyP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="FE1-pk-lbD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ech-o4-gyP" secondAttribute="bottom" id="J1l-1p-4AE"/>
                 <constraint firstItem="Mkx-Ma-b5a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="yES-36-ptw"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

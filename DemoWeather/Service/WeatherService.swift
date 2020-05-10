@@ -13,7 +13,7 @@ import Alamofire
 import SwiftyJSON
 import Kingfisher
 
-struct HardCoded {
+struct City {
      var name:String
      var lat: String
      var lon: String
@@ -38,17 +38,17 @@ extension UIImageView {
 
 class WeatherService {
     
-     let hardCodedCities: [HardCoded] = [HardCoded(name: "Berlin", lat: "52", lon: "30"),
-                                HardCoded(name: "Vienna", lat: "48.2", lon: "16.3"),
-                                 HardCoded(name: "Barcelona", lat: "41", lon: "23"),
-                                 HardCoded(name: "New York", lat: "40.7", lon: "74"),
-                                 HardCoded(name: "Amsterdam", lat: "52", lon: "22"),
-                                 HardCoded(name: "Jerusalem", lat: "31.7", lon: "35.2"),
-                                 HardCoded(name: "Hong Kong", lat: "22.3", lon: "114.2"),
-                                 HardCoded(name: "Tokyo", lat: "35.6", lon: "139.7"),
-                                 HardCoded(name: "Beijing", lat: "39", lon: "55"),
-                                 HardCoded(name: "Moscow", lat: "55.7", lon: "37.6"),
-                                 HardCoded(name: "Rome", lat: "42", lon: "12.4")]
+     let hardCodedCities: [City] = [City(name: "Berlin", lat: "52", lon: "30"),
+                                City(name: "Vienna", lat: "48.2", lon: "16.3"),
+                                 City(name: "Barcelona", lat: "41", lon: "23"),
+                                 City(name: "New York", lat: "40.7", lon: "74"),
+                                 City(name: "Amsterdam", lat: "52", lon: "22"),
+                                 City(name: "Jerusalem", lat: "31.7", lon: "35.2"),
+                                 City(name: "Hong Kong", lat: "22.3", lon: "114.2"),
+                                 City(name: "Tokyo", lat: "35.6", lon: "139.7"),
+                                 City(name: "Beijing", lat: "39", lon: "55"),
+                                 City(name: "Moscow", lat: "55.7", lon: "37.6"),
+                                 City(name: "Rome", lat: "42", lon: "12.4")]
 
      
      
@@ -62,7 +62,7 @@ class WeatherService {
     fileprivate let API_Weather_URL = "api.openweathermap.org/data/2.5/weather"
 
     
-    func fetchWeatherOneShot(cities: [HardCoded]) -> Observable<[Location]> {
+    func fetchWeatherOneShot(cities: [City]) -> Observable<[Location]> {
         // API Connection
         var locations: [Location] = []
         return Observable.create { obersver -> Disposable in
@@ -79,7 +79,6 @@ class WeatherService {
                     switch response.result {
                         case .success(let data):
                             let json = JSON(data)
-                            let tz = json["timezone"].stringValue
                             guard let location = self.parseLocation(city: city, json: json) else {
                                 print("Error Getting Location")
                                 return
@@ -110,7 +109,7 @@ class WeatherService {
         
     }
     
-      func parseLocation(city: HardCoded, json: JSON) -> Location? {
+      func parseLocation(city: City, json: JSON) -> Location? {
                 guard let weathertimeBit = parseCurrent(timezone: city.name, json: json["current"]) else { return nil }
                 guard let hourly = parseHourly(timezone: city.name, json: json["hourly"]) else { return nil}
                 guard let sevenForcase = parse7Day(json: json["daily"]) else { return nil }

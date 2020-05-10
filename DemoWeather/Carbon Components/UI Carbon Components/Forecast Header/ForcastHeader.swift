@@ -21,7 +21,7 @@ struct ForcastHeaderComponent: Component, Equatable {
     }
     
     func referenceSize(in bounds: CGRect) -> CGSize? {
-        return CGSize(width: bounds.width, height: 49)
+        return CGSize(width: bounds.width, height: 65)
     }
     
 }

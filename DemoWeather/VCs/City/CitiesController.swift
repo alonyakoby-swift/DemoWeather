@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Carbon
 
 class CitiesController: UIViewController {
 
@@ -36,6 +37,7 @@ class CitiesController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
           return .lightContent
     }
@@ -75,16 +77,45 @@ class CitiesController: UIViewController {
 extension CitiesController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let service = WeatherService()
         let currentCell = tableView.cellForRow(at: indexPath) as! CityCell
 
         let location: Location = currentCell.location!
         print(location.name)
-        let vc = CityDetailController()
+        
+
+        let header = ViewNode(DetailHeaderComponent(location: location))
+        let hourlyColletion = ViewNode(HourlyCollectionViewComponent(location: location))
+
+        let section1 = Section(id: 0, header: header, footer: hourlyColletion)
+        let section2 = makeForecast(forecasts: location.sevenForcase)
+        
+        let vc = CarbonController.initVC(sections: [section1, section2])
         vc.view.backgroundColor = .black
         vc.location = location
-        self.navigationController?.pushViewController(vc, animated: true)
+
         
+        self.navigationController?.pushViewController(vc, animated: true)
+
     }
+    func makeForecast(forecasts: [Forecast]) -> Section {
+                var array = forecasts
+                var nodes: [CellNode] = []
+                array.remove(at: 0)
+                array.forEach { (i) in
+                    let service = WeatherService()
+                    guard let dt = Double(i.dt) else  { return }
+                    let date = service.unixConvert(unix: dt)
+                    
+                    let node = CellNode(ForecastCellComponent(day: date.toString(format: "EE"),
+                    date: date.toString(format: "dd.MM.yyyy"), min: "/\(String(i.temperature.min.rounded().forTrailingZero()).convertToCelcius())", max: String(i.temperature.max.rounded().forTrailingZero()).convertToCelcius(), desc: i.weather.description, icon: i.weather.icon))
+                    
+                    nodes.append(node)
+
+        }
+            
+        let section = Section(id: 1, header: ViewNode(ForcastHeaderComponent()) , cells: nodes)
+        return section
+    }
+
 }
 
